@@ -39,9 +39,12 @@ var game = {
 
 	// Run on game resources loaded.
 	"loaded" : function () {
-		me.pool.register("player", game.PlayerEntity, true);
-		//what true does is it lets you replicate another character
-
+                me.pool.register("player", game.PlayerEntity, true);
+                //you are making the player appear on screen
+                me.pool.register("EnemyBase", game.EnemyBaseEntity);
+                me.pool.register("PlayerBase", game.PlayerBaseEntity);
+                //the bases we are making to show up on the screen
+            
 		me.state.set(me.state.MENU, new game.TitleScreen());
 		me.state.set(me.state.PLAY, new game.PlayScreen());
 

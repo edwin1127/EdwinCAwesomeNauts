@@ -5,18 +5,19 @@ game.PlayScreen = me.ScreenObject.extend({
 	onResetEvent: function() {
 		// reset the score
 		game.data.score = 0;
-		me.levelDirector.loadLevel("level01");
-		//this loads the level
-
-		var player = me.pool.pull("player", 0, 420, {});
-		me.game.world.addChild(player, 5);
-		//were loading our player here
-
-
-		me.input.bindKey(me.input.KEY.RIGHT, "right");
-		//this lets you choose what key to move with
-		
-
+                
+                me.levelDirector.loadLevel("level01");
+                //you are loading your level on the webpage 
+                
+                var player = me.pool.pull("player", 0, 0, {});
+                me.game.world.addChild(player, 5);
+                //created a character to pop on the screen 
+                
+                me.input.bindKey(me.input.KEY.RIGHT, "right");
+                me.input.bindKey(me.input.KEY.LEFT, "left");
+                me.input.bindKey(me.input.KEY.SPACE, "jump");
+                me.input.bindKey(me.input.KEY.A, "attack");
+                
 		// add our HUD to the game world
 		this.HUD = new game.HUD.Container();
 		me.game.world.addChild(this.HUD);
@@ -29,6 +30,5 @@ game.PlayScreen = me.ScreenObject.extend({
 	onDestroyEvent: function() {
 		// remove the HUD from the game world
 		me.game.world.removeChild(this.HUD);
-
 	}
 });
