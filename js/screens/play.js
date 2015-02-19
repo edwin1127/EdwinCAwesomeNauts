@@ -5,19 +5,29 @@ game.PlayScreen = me.ScreenObject.extend({
 	onResetEvent: function() {
 		// reset the score
 		game.data.score = 0;
-                
-                me.levelDirector.loadLevel("level01");
-                //you are loading your level on the webpage 
-                
-                var player = me.pool.pull("player", 0, 0, {});
-                me.game.world.addChild(player, 5);
-                //created a character to pop on the screen 
-                
-                me.input.bindKey(me.input.KEY.RIGHT, "right");
-                me.input.bindKey(me.input.KEY.LEFT, "left");
-                me.input.bindKey(me.input.KEY.SPACE, "jump");
-                me.input.bindKey(me.input.KEY.A, "attack");
-                
+
+		// loads level 1 in play.js so that it will show up on your screen
+		me.levelDirector.loadLevel("level1");
+
+		//loads the plyer so that it will show up when you run it
+		var player = me.pool.pull("player", 0, 420, {});
+		// adds player to the world
+		me.game.world.addChild(player, 5);
+
+		var gamemanager = me.pool.pull("GameManager", 0, 0, {});
+		me.game.world.addChild(gamemanager, 0);
+
+		me.input.bindKey(me.input.KEY.RIGHT, "right");
+
+		me.input.bindKey(me.input.KEY.LEFT, "left");
+
+		me.input.bindKey(me.input.KEY.SPACE, "jump");
+
+		me.input.bindKey(me.input.KEY.A, "attack");
+		
+
+
+
 		// add our HUD to the game world
 		this.HUD = new game.HUD.Container();
 		me.game.world.addChild(this.HUD);

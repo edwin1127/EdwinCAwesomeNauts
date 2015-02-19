@@ -39,12 +39,13 @@ var game = {
 
 	// Run on game resources loaded.
 	"loaded" : function () {
-                me.pool.register("player", game.PlayerEntity, true);
-                //you are making the player appear on screen
-                me.pool.register("EnemyBase", game.EnemyBaseEntity);
-                me.pool.register("PlayerBase", game.PlayerBaseEntity);
-                //the bases we are making to show up on the screen
-            
+		// registers the character entitie into the game
+		me.pool.register("player", game.PlayerEntity, true);
+		me.pool.register("PlayerBase", game.PlayerBaseEntity, true);
+		me.pool.register("EnemyBase", game.EnemyBaseEntity, true);
+		me.pool.register("EnemyCreep", game.EnemyCreep, true);
+		me.pool.register("GameManager", game.GameManager);
+
 		me.state.set(me.state.MENU, new game.TitleScreen());
 		me.state.set(me.state.PLAY, new game.PlayScreen());
 
